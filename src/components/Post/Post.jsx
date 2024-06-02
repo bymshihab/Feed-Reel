@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Post = () => {
+const Post = ({post, user}) => {
     return (
         <div>
-            <p>this is from post component..</p>
+            <p>By:{user.name} {`userName: ${user.username}`}</p>
+            <p>{post.title}</p>
         </div>
     );
 };

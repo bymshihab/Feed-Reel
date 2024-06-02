@@ -22,16 +22,21 @@ const Timeline = () => {
     fetchData(`${API_URL}/users`, setUsers);
   }, []);
 
-
   const getUserById = (userId) => {
-    return users.find(user => user.id === userId) || {};
+    return users.find((user) => user.id === userId) || {};
   };
 
   return (
     <div>
-      {
-        posts.sort((a,b) => b.id-a.id).map(post=>( <Post></Post> ))
-      }
+      {posts
+        .sort((a, b) => b.id - a.id)
+        .map((post) => (
+          <Post
+            key={post.id}
+            post={post}
+            user={getUserById(post.userId)}
+          ></Post>
+        ))}
     </div>
   );
 };
