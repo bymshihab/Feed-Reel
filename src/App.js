@@ -1,9 +1,10 @@
 import './App.css';
+import Timeline from './components/Timeline/Timeline';
 
 function App() {
   return (
     <div className="App">
-      <p className="text-xl">hello world</p>
+     <Timeline></Timeline>
     </div>
   );
 }
