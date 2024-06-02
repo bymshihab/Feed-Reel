@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
+import { FaRegComment } from "react-icons/fa6";
+import { API_URL } from "../../utils/api";
 
 const Post = ({ post, user }) => {
   const { title, body, id } = post;
   const [comments, setComments] = useState([]);
-  const [showComments, setShowComments] = useState([false]);
+  const [showComments, setShowComments] = useState(false);
 
   const fetchComments = async () => {
     try {
-      const res = await fetch(`https://jsonplaceholder.typicode.com/comments`);
+      const res = await fetch(`${API_URL}/comments`);
       const data = await res.json();
       const postComments = data.filter((comment) => comment.postId === id);
       setComments(postComments);
@@ -27,12 +29,12 @@ const Post = ({ post, user }) => {
   };
 
   return (
-    <div className=" border-2 ">
-      <div className="flex justify-start items-center border-2 gap-2">
-        <div className=" border-2 text-4xl">
+    <div className="border-2 rounded-lg m-5">
+      <div className="flex justify-start items-center p-2 bg-gray-100 gap-2">
+        <div className=" text-4xl">
           <FaRegUserCircle />
         </div>
-        <div className="border-2">
+        <div className="">
           <p className="text-xl">{user.name}</p>
         </div>
       </div>
@@ -43,19 +45,31 @@ const Post = ({ post, user }) => {
       </div>
 
       <button
-        className="btn border-2 bg-green-300 w-full font-semibold"
+        className="btn border p-1 rounded-lg bg-green-300 w-1/12 font-semibold m-2"
         onClick={handleComment}
       >
-        {showComments ? "Hide Comments" : "Show Comments"}
+        <div className="flex justify-center items-center gap-2">
+          <div>
+            <FaRegComment className="text-2xl" />
+          </div>
+          <div>{comments.length}</div>
+        </div>
       </button>
 
       {showComments && (
-        <div className="mx-14 space-y-2 mt-3">
+        <div className="mx-14 space-y-2 m-3 border p-3 rounded-md">
           {comments.length > 0 ? (
             comments.map((comment) => (
-              <div key={comment.id}>
+              <div key={comment.id} className="border p-1">
+                <div className="flex justify-start items-center  gap-2">
+                  <div className=" text-2xl">
+                    <FaRegUserCircle />
+                  </div>
+                  <div className="">
+                    <p className="text-lg font-semibold">{comment.name}</p>
+                  </div>
+                </div>
                 <p>{comment.body}</p>
-                <p>By: {comment.name}</p>
               </div>
             ))
           ) : (
