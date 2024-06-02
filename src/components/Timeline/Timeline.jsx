@@ -28,7 +28,8 @@ const Timeline = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div class="w-1/2 mx-auto px-4">
+      <div className="p-2  w-full text-xl font-semibold fixed bg-gray-100"> Feed Reel</div>
+      <div class="w-1/2 mx-auto px-4 mt-10">
         {posts
           .sort((a, b) => b.id - a.id)
           .map((post) => (
