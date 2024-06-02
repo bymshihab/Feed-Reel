@@ -1,12 +1,15 @@
-import React from 'react';
+import React from "react";
 
-const Post = ({post, user}) => {
-    return (
-        <div>
-            <p>By:{user.name} {`userName: ${user.username}`}</p>
-            <p>{post.title}</p>
-        </div>
-    );
+const Post = ({ post, user }) => {
+    const {title, body}=post
+  return (
+    <div>
+      <h2>{title}</h2>
+      <p>{body}</p>
+      <p>By: {user.name}</p>
+      
+    </div>
+  );
 };
 
 export default Post;
