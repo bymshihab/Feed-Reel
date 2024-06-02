@@ -27,16 +27,18 @@ const Timeline = () => {
   };
 
   return (
-    <div>
-      {posts
-        .sort((a, b) => b.id - a.id)
-        .map((post) => (
-          <Post
-            key={post.id}
-            post={post}
-            user={getUserById(post.userId)}
-          ></Post>
-        ))}
+    <div className="flex flex-col items-center">
+      <div class="w-1/2 mx-auto px-4">
+        {posts
+          .sort((a, b) => b.id - a.id)
+          .map((post) => (
+            <Post
+              key={post.id}
+              post={post}
+              user={getUserById(post.userId)}
+            ></Post>
+          ))}
+      </div>
     </div>
   );
 };
