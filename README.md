@@ -54,4 +54,4 @@ Make sure you have the following installed:
 
 - The app will fetch posts, users, and comments data from the APIs.
 - Posts will be displayed in descending order of post ID.
-- Click on a post to expand it and see its comments.
+- Click on a comments button to expand it and see its comments.
